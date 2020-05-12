@@ -1,3 +1,6 @@
+[console_scripts]
+init_db = pyramid_tutorial.init_db:main
+
 [paste.app_factory]
 main = pyramid_tutorial.app:main
 

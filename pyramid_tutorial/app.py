@@ -2,16 +2,10 @@ from pyramid.config import Configurator
 from pyramid.response import Response
 
 from sqlalchemy import engine_from_config
-from sqlalchemy.orm import scoped_session
-from sqlalchemy.orm import sessionmaker
 
 from waitress import serve
 
-from zope.sqlalchemy import register as register_session
-
-
-db_session = scoped_session(sessionmaker())
-register_session(db_session)
+from .models import db_session
 
 
 def hello_world(request):

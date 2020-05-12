@@ -1,5 +1,7 @@
 setup.py
 pyramid_tutorial/app.py
+pyramid_tutorial/init_db.py
+pyramid_tutorial/models.py
 pyramid_tutorial.egg-info/PKG-INFO
 pyramid_tutorial.egg-info/SOURCES.txt
 pyramid_tutorial.egg-info/dependency_links.txt

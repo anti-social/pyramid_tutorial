@@ -17,6 +17,9 @@ mysqlclient = "^1.4.6"
 pytest = "^5.4.1"
 waitress = "^1.4.3"
 
+[tool.poetry.scripts]
+init_db = "pyramid_tutorial.init_db:main"
+
 [tool.poetry.plugins."paste.app_factory"]
 main = "pyramid_tutorial.app:main"
 
