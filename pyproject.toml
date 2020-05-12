@@ -7,6 +7,7 @@ authors = ["Pyramid Tutorial"]
 [tool.poetry.dependencies]
 python = "^3.8"
 pyramid = "^1.10.4"
+pyramid_debugtoolbar = "^4.6.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.1"

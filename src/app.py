@@ -10,6 +10,7 @@ def hello_world(request):
 
 if __name__ == '__main__':
     with Configurator() as config:
+        config.include('pyramid_debugtoolbar')
         config.add_route('hello', '/')
         config.add_view(hello_world, route_name='hello')
         import pprint
