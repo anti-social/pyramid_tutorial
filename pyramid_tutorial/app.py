@@ -6,11 +6,13 @@ from sqlalchemy import engine_from_config
 from waitress import serve
 
 from .models import db_session
+from .models import Product
 
 
 def hello_world(request):
     print('Incoming request')
-    return Response('<body><h1>Hello World!</h1></body>')
+    num_products = db_session.query(Product).count()
+    return Response(f'<body><h1>Hello World!</h1><p>{num_products}</body>')
 
 
 def main(global_config, **settings):
