@@ -8,12 +8,10 @@ def hello_world(request):
     return Response('<body><h1>Hello World!</h1></body>')
 
 
-if __name__ == '__main__':
-    with Configurator() as config:
-        config.include('pyramid_debugtoolbar')
+def main(global_config, **settings):
+    with Configurator(settings=settings) as config:
         config.add_route('hello', '/')
         config.add_view(hello_world, route_name='hello')
         import pprint
         pprint.pprint(config.get_settings())
-        app = config.make_wsgi_app()
-    serve(app, host='0.0.0.0', port=6543)
+        return config.make_wsgi_app()
