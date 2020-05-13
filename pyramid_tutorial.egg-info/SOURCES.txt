@@ -8,3 +8,4 @@ pyramid_tutorial.egg-info/dependency_links.txt
 pyramid_tutorial.egg-info/entry_points.txt
 pyramid_tutorial.egg-info/requires.txt
 pyramid_tutorial.egg-info/top_level.txt
+pyramid_tutorial/templates/products.jinja2
