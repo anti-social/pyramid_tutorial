@@ -11,8 +11,7 @@ from .models import Product
 
 def hello_world(request):
     print('Incoming request')
-    products = db_session.query(Product).all()
-    return Response(f'<body><h1>Hello World!</h1></body>')
+    return Response('<body><h1>Hello World!</h1></body>')
 
 
 @view_config(route_name='product_create', renderer='product_edit.jinja2')
