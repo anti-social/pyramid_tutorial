@@ -1,11 +1,17 @@
 setup.py
+pyramid_tutorial/__init__.py
 pyramid_tutorial/app.py
+pyramid_tutorial/forms.py
 pyramid_tutorial/init_db.py
 pyramid_tutorial/models.py
+pyramid_tutorial/views.py
 pyramid_tutorial.egg-info/PKG-INFO
 pyramid_tutorial.egg-info/SOURCES.txt
 pyramid_tutorial.egg-info/dependency_links.txt
 pyramid_tutorial.egg-info/entry_points.txt
 pyramid_tutorial.egg-info/requires.txt
 pyramid_tutorial.egg-info/top_level.txt
+pyramid_tutorial/templates/_formhelpers.jinja2
+pyramid_tutorial/templates/base.jinja2
+pyramid_tutorial/templates/product_edit.jinja2
 pyramid_tutorial/templates/products.jinja2

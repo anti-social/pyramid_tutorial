@@ -1,0 +1,12 @@
+{% from "_formhelpers.jinja2" import render_form %}
+
+{% extends "base.jinja2" %}
+
+{% block title %}
+  Create product
+{% endblock %}
+
+{% block content %}
+  <h1>Create new product</h1>
+  {{ render_form(form) }}
+{% endblock %}

@@ -1,7 +1,18 @@
-<body>
+{% extends "base.jinja2" %}
+
+{% block title %}
+  Store products
+{% endblock %}
+
+{% block content %}
   <h1>Our store products!</h1>
+  <a href="{{ request.route_url('product_create') }}">Create product</a>
   {% for p in products %}
-    <p>{{ p.id }}
-    <p>{{ p.name }}
+    <p>{{ p.id }}</p>
+    <p>
+      <a href="{{ request.route_url('product_edit', id=p.id) }}">
+        {{ p.name }}
+      </a>
+    </p>
   {% endfor %}
-</body>
+{% endblock %}

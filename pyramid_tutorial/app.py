@@ -4,10 +4,7 @@ from pyramid.config import Configurator
 
 from sqlalchemy import engine_from_config
 
-from waitress import serve
-
 from .models import db_session
-from .models import Product
 
 
 log = logging.getLogger(__name__)
@@ -19,6 +16,7 @@ def main(global_config, **settings):
     # Database
     engine = engine_from_config(settings, prefix='sqlalchemy.')
     db_session.configure(bind=engine)
+    config.include('pyramid_tm')
 
     # Templating
     config.include('pyramid_jinja2')
@@ -26,6 +24,8 @@ def main(global_config, **settings):
     # Routing
     config.add_route('hello', '/')
     config.add_route('products', '/products')
+    config.add_route('product_create', '/products/create')
+    config.add_route('product_edit', '/products/edit/{id}')
     config.scan('.views')
 
     return config.make_wsgi_app()

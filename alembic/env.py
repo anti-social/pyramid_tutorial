@@ -60,7 +60,9 @@ def run_migrations_online():
 
     with engine.connect() as connection:  # noqa
         context.configure(
-            connection=connection, target_metadata=target_metadata
+            connection=connection,
+            target_metadata=target_metadata,
+            compare_type=True,
         )
 
         with context.begin_transaction():

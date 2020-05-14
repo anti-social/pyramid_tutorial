@@ -18,5 +18,5 @@ class Product(Base):
     __tablename__ = 'products'
 
     id = Column(Integer, primary_key=True)
-    status = Column(Integer)
+    status = Column(Integer, nullable=False, default=0)
     name = Column(Text)
