@@ -1,3 +1,5 @@
+from typing import Any
+
 from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import Text
@@ -11,7 +13,7 @@ from zope.sqlalchemy import register as register_session
 db_session = scoped_session(sessionmaker())
 register_session(db_session)
 
-Base = declarative_base()
+Base: Any = declarative_base()
 
 
 class Product(Base):

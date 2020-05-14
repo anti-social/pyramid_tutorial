@@ -1,4 +1,5 @@
 import logging
+from typing import Dict
 
 from pyramid.config import Configurator
 
@@ -10,7 +11,7 @@ from .models import db_session
 log = logging.getLogger(__name__)
 
 
-def main(global_config, **settings):
+def main(global_config: Dict[str, str], **settings):
     config = Configurator(settings=settings)
 
     # Database

@@ -1,6 +1,11 @@
+from typing import Any
+from typing import Dict
+from typing import Union
+
 from pyramid.httpexceptions import HTTPBadRequest
 from pyramid.httpexceptions import HTTPFound
 from pyramid.httpexceptions import HTTPNotFound
+from pyramid.request import Request
 from pyramid.response import Response
 from pyramid.view import view_config
 
@@ -9,13 +14,16 @@ from .models import db_session
 from .models import Product
 
 
-def hello_world(request):
+ViewResponse = Union[Response, Dict[str, Any]]
+
+
+def hello_world(request: Request) -> Response:
     print('Incoming request')
     return Response('<body><h1>Hello World!</h1></body>')
 
 
 @view_config(route_name='product_create', renderer='product_edit.jinja2')
-def product_create(request):
+def product_create(request: Request) -> Response:
     form = ProductForm(request.POST)
     if request.method == 'POST' and form.validate():
         product = Product()
@@ -29,7 +37,7 @@ def product_create(request):
 
 
 @view_config(route_name='product_edit', renderer='product_edit.jinja2')
-def product_edit(request):
+def product_edit(request: Request) -> ViewResponse:
     try:
         product_id = int(request.matchdict['id'])
     except ValueError:
@@ -51,7 +59,7 @@ def product_edit(request):
 
 
 @view_config(route_name='products', renderer='products.jinja2')
-def products(request):
+def products(request: Request) -> ViewResponse:
     products = (
         db_session.query(Product)
         .filter(Product.status == 0)

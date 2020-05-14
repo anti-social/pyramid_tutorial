@@ -21,6 +21,7 @@ pytest = "^5.4.1"
 waitress = "^1.4.3"
 flake8 = "^3.8.1"
 pre-commit = "^2.4.0"
+mypy = "^0.770"
 
 [tool.poetry.scripts]
 init_db = "pyramid_tutorial.init_db:main"
