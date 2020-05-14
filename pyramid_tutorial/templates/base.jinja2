@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ request.static_url('pyramid_tutorial:static/css/bulma.min.css') }}">
 <body>
-  {% block content %}{% endblock %}
+  <div class="container">
+    <h1 class="title">{{ self.title() }}</h1>
+    {% block content %}{% endblock %}
+  </div>
 </body>

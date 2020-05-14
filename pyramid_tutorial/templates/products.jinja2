@@ -5,14 +5,28 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Our store products!</h1>
-  <a href="{{ request.route_url('product_create') }}">Create product</a>
+  <h1 class="title">Our store products!</h1>
+  <nav class="navbar">
+    <div class="navbar-menu">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button" href="{{ request.route_url('product_create') }}">Create product</a>
+        </div>
+      </div>
+    </div>
+  </nav>
   {% for p in products %}
-    <p>{{ p.id }}</p>
-    <p>
-      <a href="{{ request.route_url('product_edit', id=p.id) }}">
-        {{ p.name }}
-      </a>
-    </p>
+    <div class="columns">
+      <div class="column is-1">
+        <p>{{ p.id }}</p>
+      </div>
+      <div class="column">
+        <p>
+          <a href="{{ request.route_url('product_edit', id=p.id) }}">
+            {{ p.name }}
+          </a>
+        </p>
+      </div>
+    </div>
   {% endfor %}
 {% endblock %}

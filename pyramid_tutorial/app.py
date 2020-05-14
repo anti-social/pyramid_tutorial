@@ -28,5 +28,7 @@ def main(global_config: Dict[str, str], **settings):
     config.add_route('product_create', '/products/create')
     config.add_route('product_edit', '/products/edit/{id}')
     config.scan('.views')
+    # Static
+    config.add_static_view('static', 'pyramid_tutorial:static')
 
     return config.make_wsgi_app()
