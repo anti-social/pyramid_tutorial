@@ -15,6 +15,7 @@ mysqlclient = "^1.4.6"
 alembic = "^1.4.2"
 pyramid_jinja2 = "^2.8"
 wtforms = "^2.3.1"
+elasticmagic = "^0.1.0-alpha.18"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.1"
@@ -25,6 +26,7 @@ mypy = "^0.770"
 
 [tool.poetry.scripts]
 init_db = "pyramid_tutorial.init_db:main"
+init_es = "pyramid_tutorial.init_es:main"
 
 [tool.poetry.plugins."paste.app_factory"]
 main = "pyramid_tutorial.app:main"
