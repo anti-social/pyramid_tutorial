@@ -20,7 +20,7 @@
 
 {% macro render_form(form) %}
   <form method="POST">
-    {% for field in form._fields.values() %}
+    {% for field in form %}
       {{ render_field(field) }}
     {% endfor %}
     <div class="field is-horizontal">
