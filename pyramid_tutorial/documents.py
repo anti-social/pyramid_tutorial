@@ -11,6 +11,10 @@ es_client = Elasticsearch()
 es_cluster = Cluster(es_client)
 
 
+def get_es_product_index(settings):
+    return es_cluster[settings['elasticsearch.product_index']]
+
+
 class ProductDoc(Document):
     __doc_type__ = 'product'
 

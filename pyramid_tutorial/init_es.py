@@ -10,7 +10,7 @@ from pyramid.paster import (
 )
 
 from .documents import es_client
-from .documents import es_cluster
+from .documents import get_es_product_index
 from .documents import ProductDoc
 from .models import db_session
 from .models import Product
@@ -42,9 +42,9 @@ def main(argv=sys.argv):
     engine = engine_from_config(settings, 'sqlalchemy.')
     db_session.configure(bind=engine)
 
-    index_name = 'pyramid_tutorial_product'
+    es_product_index = get_es_product_index(settings)
     es_client.indices.create(
-        index=index_name,
+        index=es_product_index.get_name(),
         body={
             'settings': {
                 'index': {
@@ -54,7 +54,6 @@ def main(argv=sys.argv):
             }
         }
     )
-    es_product_index = es_cluster[index_name]
     es_product_index.put_mapping(ProductDoc)
 
     limit = 5

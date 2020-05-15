@@ -9,6 +9,8 @@ from pyramid.request import Request
 from pyramid.response import Response
 from pyramid.view import view_config
 
+from .documents import get_es_product_index
+from .documents import ProductDoc
 from .forms import ProductForm
 from .models import db_session
 from .models import Product
@@ -68,4 +70,17 @@ def products(request: Request) -> ViewResponse:
     )
     return {
         'products': products,
+    }
+
+
+@view_config(route_name='product_search', renderer='products.jinja2')
+def product_search(request: Request) -> ViewResponse:
+    q = request.GET['q'].strip()
+    if not q:
+        return HTTPBadRequest()
+    es_product_index = get_es_product_index(request.registry.settings)
+    sq = es_product_index.search_query(ProductDoc.name.match(q))
+    res = sq.get_result()
+    return {
+        'products': res.hits
     }

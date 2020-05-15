@@ -24,6 +24,7 @@ def main(global_config: Dict[str, str], **settings):
 
     # Routing
     config.add_route('hello', '/')
+    config.add_route('product_search', '/products', request_param='q')
     config.add_route('products', '/products')
     config.add_route('product_create', '/products/create')
     config.add_route('product_edit', '/products/edit/{id}')
