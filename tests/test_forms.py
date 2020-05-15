@@ -1,3 +1,5 @@
+from unittest.mock import Mock
+
 from webob.multidict import MultiDict
 
 from pyramid_tutorial.forms import ProductForm
@@ -16,3 +18,12 @@ def test_product_form__long_name():
     assert form.validate() is False
     assert len(form.errors) == 1
     assert 'name' in form.errors
+
+
+def test_product_form__populate_obj():
+    form = ProductForm(MultiDict([('name', 'a' * 10), ('status', '0')]))
+    assert form.validate() is True
+    product = Mock()
+    form.populate_obj(product)
+    assert product.name == 'aaaaaaaaaa'
+    assert product.status == 0
